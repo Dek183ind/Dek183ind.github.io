@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Batalla contra Sans</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+            transition: background-color 0.5s, transform 0.1s;
+        }
+        img {
+            max-width: 300px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        #battleMessage {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Batalla contra Sans</h1>
+    <img src="imagenes/SANS.png" alt="Sans en batalla">
+    <p id="intro">Sans te mira fijamente... ¿Estás seguro de querer continuar?</p>
+
+    <button onclick="startBattle()">Iniciar Batalla</button>
+
+    <p id="battleMessage"></p>
+
+    <audio id="battleMusic" src="MEGALOVANIA.mp4" preload="auto"></audio>
+
+    <script>
+        function startBattle() {
+            // Cambiar fondo
+            document.body.style.backgroundColor = 'black'
+            // Mostrar mensaje dramático
+            document.getElementById('intro').textContent = '¡La batalla ha comenzado!';
+            document.getElementById('battleMessage').textContent = 'Sans sonríe... sabe que no será fácil.';
+            // Tocar música (asegúrate de tener un archivo battle-theme.mp3 en tu carpeta)
+            const music = document.getElementById('battleMusic');
+            music.play();
+
+            // Simular temblor de pantalla
+            let i = 0;
+            const shakeInterval = setInterval(() => {
+                document.body.style.transform = (i % 2 === 0) ? 'translate(2px, 2px)' : 'translate(-2px, -2px)';
+                i++;
+                if (i > 10) {
+                    clearInterval(shakeInterval);
+                    document.body.style.transform = 'translate(0, 0)';
+                }
+            }, 100);
+        }
+    </script>
+
+    <p style="margin-top: 30px; font-size: 12px;">© Undertale, Toby Fox</p>
+</body>
+</html>
